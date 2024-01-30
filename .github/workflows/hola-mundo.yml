@@ -1,5 +1,8 @@
 name: Hello-World
-on: [push]
+on: 
+  push:
+    paths:
+      - 'src/**'
 jobs:
     Hello-World:
         runs-on: ubuntu-22.04
