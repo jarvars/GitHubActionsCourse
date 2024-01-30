@@ -1,8 +1,12 @@
-name: Hello-World
+name: Hello-World App Workflow
 on: 
-  push    
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'src/**'
 jobs:
-    Hello-World:
+    CI:
         runs-on: ubuntu-22.04
         defaults:
             run:
