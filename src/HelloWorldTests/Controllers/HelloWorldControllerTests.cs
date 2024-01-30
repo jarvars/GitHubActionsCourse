@@ -11,7 +11,7 @@ namespace HelloWorld.Controllers.Tests
             var api = new HelloWorldController();
             var result = api.Get();
 
-            Assert.That(result, Is.EqualTo("Hello World"));
+            Assert.That(result, Is.EqualTo("Hello World!"));
         }
     }
 }
