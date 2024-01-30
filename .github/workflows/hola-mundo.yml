@@ -5,6 +5,7 @@ on:
       - 'main'
     paths:
       - 'src/**'
+      - '.github/*.yml'
 jobs:
     CI:
         runs-on: ubuntu-22.04
