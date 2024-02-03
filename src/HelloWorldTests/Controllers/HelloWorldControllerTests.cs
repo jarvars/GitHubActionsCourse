@@ -9,9 +9,10 @@ namespace HelloWorld.Controllers.Tests
         [Test()]
         public void GetHelloWorld()
         {
-            var user = Environment.GetEnvironmentVariable("User");
+            //arrange
+            string user = Environment.GetEnvironmentVariable("User") ?? "4everAlone";
 
-            var inMemorySettings = new Dictionary<string, string> 
+            var inMemorySettings = new Dictionary<string, string>
             {
                 {"User", user}
             };
@@ -21,9 +22,12 @@ namespace HelloWorld.Controllers.Tests
                 .Build();
 
             var api = new HelloWorldController(configuration);
+            
+            //act
             var result = api.Get();
 
-            Assert.AreEqual(expected: $"Hello World!", actual: result, message: $"{user} y {result}");
+            //assert
+            Assert.AreEqual(expected: $"Hello World {user}!", actual: result);
         }
     }
 }
