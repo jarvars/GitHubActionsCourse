@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HelloWorldTests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "User": "jarvars"
+      }
+    }
+  }
+}

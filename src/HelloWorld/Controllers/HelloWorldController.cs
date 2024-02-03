@@ -17,7 +17,7 @@ namespace HelloWorld.Controllers
         public string Get()
         {
             var user = Configuration["User"];
-            return $"Hello World {user}!";
+            return $"Hello World {user} !";
         }
     }
 }

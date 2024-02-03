@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Moq;
 using NUnit.Framework;
 
 namespace HelloWorld.Controllers.Tests
@@ -8,19 +7,23 @@ namespace HelloWorld.Controllers.Tests
     public class HelloWorldControllerTests
     {
         [Test()]
-        public void GetTest()
+        public void GetHelloWorld()
         {
             var user = Environment.GetEnvironmentVariable("User");
 
-            var configuration = new Mock<IConfiguration>();
-            configuration
-                .SetupGet(m => m["User"])
-                .Returns(user);
+            var inMemorySettings = new Dictionary<string, string> 
+            {
+                {"User", user}
+            };
 
-            var api = new HelloWorldController(configuration.Object);
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
+
+            var api = new HelloWorldController(configuration);
             var result = api.Get();
 
-            Assert.That(result, Is.EqualTo($"Hello World {user}!"));
+            Assert.AreEqual(expected: $"Hello World!", actual: result, message: $"{user} y {result}");
         }
     }
 }
