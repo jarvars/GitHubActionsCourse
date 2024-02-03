@@ -6,10 +6,18 @@ namespace HelloWorld.Controllers
     [Route("api/[controller]")]
     public class HelloWorldController : ControllerBase
     {
+        private readonly IConfiguration Configuration;
+
+        public HelloWorldController(IConfiguration configuration) 
+        {
+            Configuration = configuration;
+        }
+
         [HttpGet]
         public string Get()
         {
-            return "Hello World!";
+            var user = Configuration["User"];
+            return $"Hello World {user}!";
         }
     }
 }
